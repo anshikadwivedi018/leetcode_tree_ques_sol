@@ -1,0 +1,25 @@
+#Leetcode Ques 543(DIAMETER OF BINARY TREE)
+
+
+class Solution {
+    int m=0;
+    public int diameter(TreeNode root) {
+        int d=0,lh,rh;
+            if(root==null)
+            return 0;
+            if(root.left==null && root.right==null)
+            return 1;
+            else{
+                lh=diameter(root.left);
+                rh=diameter(root.right);
+            }
+            d=Math.max(lh,rh)+1;
+            m=Math.max(m,lh+rh);
+            return d;
+    }
+    public int diameterOfBinaryTree(TreeNode root) {
+        diameter(root);
+        return m;
+        }
+        
+}
