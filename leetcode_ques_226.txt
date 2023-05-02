@@ -1,0 +1,17 @@
+#Leetcode Ques 226(INVERT BINARY TREE)
+
+
+class Solution {
+    public TreeNode invertTree(TreeNode root) {
+        TreeNode lp;
+        TreeNode rp;
+        if(root==null)
+        return null;
+        lp=invertTree(root.left);
+        rp=invertTree(root.right);
+        root.left=rp;
+        root.right=lp;
+        return root;
+    }
+
+}
