@@ -1,0 +1,20 @@
+#Leetcode ques 563( BINARY TREE TILT)
+
+
+class Solution {
+    int tilttotal=0;
+    public int findTilt(TreeNode root) {
+        sum(root);
+        return tilttotal;}
+        public int sum(TreeNode root){
+        int lsum=0;
+        int rsum=0;
+        if(root==null){
+            return 0;
+        }
+        lsum=sum(root.left);
+        rsum=sum(root.right);
+        tilttotal=tilttotal+Math.abs(lsum-rsum);
+        return rsum+lsum+root.val;
+    }
+}
