@@ -1,0 +1,43 @@
+# Leetcode Ques 94(BINARY TREE INORDER TRAVERSAL)
+
+# USING STACK 
+
+class Solution:
+    def right(leftnode,curr):
+        while(leftnode.right!=None and leftnode.right!=curr):
+            leftnode=leftnode.right
+        return leftnode
+    def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+        cur=root
+        ans=[]
+        while(cur!=None):
+            leftnode=cur.left   #put a pointer in left
+            if(leftnode==None):
+                ans.append(cur.val)
+                cur=cur.right
+            else:
+                rightmost=getright(leftnode,cur)
+                if(rightmost.right==None):   #create a thread
+                    rightmost.right=cur
+                    cur=cur.left
+                else:
+                    rightmost.right=None
+                    ans.append(cur.val)
+                    cur=cur.right
+        return ans
+
+
+# RECURSIVE APPROACH 
+
+class Solution {
+    List<Integer> al=new ArrayList<Integer>();
+    public List<Integer> inorderTraversal(TreeNode root) { 
+        if(root!=null)
+        {
+            inorderTraversal(root.left);
+            al.add(root.val);
+            inorderTraversal(root.right);
+        }
+        return al;
+    }
+}
