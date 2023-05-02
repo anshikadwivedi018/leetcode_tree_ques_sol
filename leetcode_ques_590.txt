@@ -1,0 +1,15 @@
+#Leetcode ques 590(N-ary Tree Postorder Traversal)
+
+
+class Solution {
+    List<Integer> al=new ArrayList<Integer>();
+    public List<Integer> postorder(Node root) {
+       if (root==null)
+       return al;
+       for(Node i:root.children)
+       postorder(i);
+       al.add(root.val);
+       return al;
+    }
+}
+
