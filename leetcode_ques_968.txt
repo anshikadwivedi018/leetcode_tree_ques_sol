@@ -1,0 +1,29 @@
+#Leetcode Ques 968(BINARY TREE CAMERAS)
+
+
+class Solution {
+    int count=0;
+    public int camera(TreeNode root)
+    {
+        int le,re;
+        if(root==null)
+        return 1;
+        le=camera(root.left);
+        re=camera(root.right);
+        if(le==-1 || re==-1)
+        {
+            count++;
+            return 0;
+        }
+        else if(le==0 || re==0)
+        return 1;
+        return -1;
+    }
+    public int minCameraCover(TreeNode root) {
+        if(root==null)
+        return 0;
+        if(camera(root)==-1)
+        return count+1;
+        return count;
+    }
+}
