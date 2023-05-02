@@ -1,0 +1,17 @@
+#Leetcode Ques 104(MAXIMUM DEPTH OF BINARY TREE)
+
+
+class Solution {
+    public int maxDepth(TreeNode root) {
+        if(root==null)
+        return 0;
+        else{
+            int lh=maxDepth(root.left);
+            int rh=maxDepth(root.right);
+            if(rh>lh)
+            return (rh+1);
+            else
+            return (lh+1);
+        }
+    }
+}
