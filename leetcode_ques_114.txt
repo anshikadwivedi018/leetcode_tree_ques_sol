@@ -1,0 +1,28 @@
+#Leetcode Ques 114(Flatten Binary Tree to Linked List)
+
+class Solution {
+    public TreeNode  helper(TreeNode root) {
+        if(root==null)
+        return null;
+        if(root.left==null && root.right==null)
+        return root;
+        else{
+            TreeNode lt=helper(root.left);
+            TreeNode rt=helper(root.right);
+            if(lt!=null){
+                lt.right=root.right;
+                root.right=root.left;
+                root.left=null;
+                }
+            if (rt!=null)
+                return rt;
+            else
+            return lt;
+        }
+    }
+    public void flatten(TreeNode root)
+    {
+      helper(root);
+    }
+}
+    
