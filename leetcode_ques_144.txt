@@ -1,0 +1,34 @@
+# Leetcode Ques 144(BINARY TREE PREORDER TRAVERSAL)
+
+
+# USING STACK
+
+class Solution:
+    def preorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+        curr=root
+        res=[]
+        st=[]
+        st.append(root)
+        while(len(st)>0):
+            curr=st.pop()
+            if curr!=None:
+              res.append(curr.val)
+              st.append(curr.right)
+              st.append(curr.left)
+        return res
+
+
+# RECURSIVE APPROACH
+
+class Solution {
+    List<Integer> al=new ArrayList<Integer>();
+    public List<Integer> preorderTraversal(TreeNode root) {
+        if (root!=null)
+        {
+            al.add(root.val);
+            preorderTraversal(root.left);
+            preorderTraversal(root.right);
+        }
+        return al;
+    }
+}
