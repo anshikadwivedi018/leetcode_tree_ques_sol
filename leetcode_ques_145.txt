@@ -1,0 +1,34 @@
+# Leetcode Ques 145(BINARY TRREE POSTORDER TRAVERSAL)
+
+
+# RECURSIVE APPROACH
+
+class Solution {
+    List<Integer> li=new ArrayList<Integer>();
+    public List<Integer> postorderTraversal(TreeNode root) {
+        if (root!=null)
+        {
+            postorderTraversal(root.left);
+            postorderTraversal(root.right);
+            li.add(root.val);      
+        }
+        return li;
+    }
+}
+
+
+#  USING LIST
+
+List<Integer> li=new ArrayList<Integer>();
+    public List<Integer> postorderTraversal(TreeNode root) {
+        List<Integer> post = new ArrayList<Integer>();
+        
+        if(root == null) return post;
+        
+        post.addAll(postorderTraversal(root.left));
+        post.addAll(postorderTraversal(root.right));
+        post.add(root.val);
+        
+        return post;
+    }
+}
